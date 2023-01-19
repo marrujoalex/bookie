@@ -27,6 +27,6 @@ export async function fetchKingWorks() {
 }
 
 export async function fetchBook(id: string) {
-    const url = `${domain}/books/${id}.json`
+    const url = `${domain}/works/${id}.json`
     return await fetch(url).then(response => response.json())
 }

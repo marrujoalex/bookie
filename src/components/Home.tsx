@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import useWorks from "../hooks/useWorks";
 
 function Home() {
@@ -9,18 +10,24 @@ function Home() {
 
   return (
     <div className='App'>
-      <h1>Stephen King Books</h1>
-      <p>Click on a book to know more about it</p>
-      {isFetching ? <div>Updating..</div> : <div></div>}
-      {data?.entries.map((entry) => {
-        return (
-          <ul>
-              <li key={entry.key.split('/')[2]}>
-                {entry.title} - {entry.key.split('/')[2]} - {new Date(entry.created.value).toLocaleDateString()}
-              </li>
-          </ul>
-        )
-      })} 
+        <h1>Stephen King Books</h1>
+        <p>Click on a book to know more about it</p>
+        {isFetching ? <div>Updating..</div> : <div></div>}
+        <nav>
+            <ul>
+            {data?.entries.map((entry) => {
+                const bookId = entry.key.split('/')[2]
+                return (
+                    <li key={bookId}>
+                        <NavLink to={`/book/${bookId}`}>
+                            {entry.title} - {bookId} - {new Date(entry.created.value).toLocaleDateString()}
+                        </NavLink>
+                    </li>
+                )
+            })} 
+            </ul>
+        </nav>
+
     </div>
   )
 }
