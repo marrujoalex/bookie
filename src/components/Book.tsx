@@ -20,14 +20,13 @@ const bookDetailQuery = (id: string) => ({
     }
 })
 
-export const bookLoader =
-  (queryClient: any) =>
-  async ({ params }: { params: any }) => {
-    const query: any = bookDetailQuery(params.bookId)// useBooks(params.bookId);
-    return (
-      queryClient.getQueryData(query.queryKey) ??
-      (await queryClient.fetchQuery(query))
-    );
+export const bookLoader = (queryClient: any) =>
+    async ({ params }: { params: any }) => {
+        const query: any = bookDetailQuery(params.bookId) // useBooks(params.bookId);
+        return (
+            queryClient.getQueryData(query.queryKey) ??
+            (await queryClient.fetchQuery(query))
+        );
   };
 
 // export const bookAction = (queryClient: any) => 
@@ -40,11 +39,15 @@ export const bookLoader =
 function Book() {
     const params: any = useParams()
     const { data, isFetching } = useQuery(bookDetailQuery(params.bookId))
+    const desc = data.description !== undefined ? data.description : "No description"
     return (
         <div>
             {isFetching ? <div className="">Updating...</div> : <div></div>}
             <h1>{data.title}</h1>
-            <div>{data.description}</div>
+            <div>{
+                typeof(data.description) === 'string' 
+                ? desc
+                : desc.value}</div>
         </div>
     )
 }

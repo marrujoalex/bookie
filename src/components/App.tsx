@@ -34,7 +34,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
-        <footer>
+        <footer className='top-8 p-8'>
             <hr />
             <p>Big Little Concepts</p>
         </footer>
@@ -43,3 +43,4 @@ function App() {
 }
 
 export default App
+
