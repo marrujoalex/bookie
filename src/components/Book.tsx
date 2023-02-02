@@ -41,10 +41,10 @@ function Book() {
     const { data, isFetching } = useQuery(bookDetailQuery(params.bookId))
     const desc = data.description !== undefined ? data.description : "No description"
     return (
-        <div>
+        <div className="flex flex-col flex-wrap align-top">
             {isFetching ? <div className="">Updating...</div> : <div></div>}
-            <h1>{data.title}</h1>
-            <div>{
+            <h1 className="top-4 p-8 text-2xl font-bold justify-center">{data.title}</h1>
+            <div className="p-4 text-lg">{
                 typeof(data.description) === 'string' 
                 ? desc
                 : desc.value}</div>
