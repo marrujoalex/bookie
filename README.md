@@ -5,8 +5,8 @@ a simple view of books and when they came out from authors via the OpenLibrary a
 made to view books from the openlibrary api using newer front-end technologies such as react-query and more
 
 ### things to add
-* the usage of tailwind for styling
-* trpc
 * potential post requests
 * author search
-* linking (changed from react-router, needs updating from react-query)
+* readjusting the navbar to fit the app's needs better
+* finalizing the styles for the design
+* add additional functionality for navigating across the app
