@@ -1,11 +1,13 @@
 import '../styles/App.css'
 import { BrowserRouter as Router, RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import Home from './Home';
 import Book, { bookLoader } from './Book';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import About from './About';
+import Footer from './layout/Footer';
 import ErrorPage from './ErrorPage';
-import { NavbarWrapper } from './layout/NavbarWrapper';
-import { Footer } from './layout/Footer';
+import NavbarWrapper from './layout/NavbarWrapper';
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -23,6 +25,12 @@ const router = createBrowserRouter([
         element: <Book />,
         loader: bookLoader(queryClient),
         // action: bookAction(queryClient)
+      },
+      {
+        path: '/about',
+        element: <About />,
+        // loader: aboutLoader(queryClient),
+        // action: aboutAction(queryClient)
       }
     ]
   }
@@ -37,5 +45,4 @@ function App() {
   )
 }
 
-export default App
-
+export default App;

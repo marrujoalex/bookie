@@ -36,9 +36,9 @@ function Home() {
     }
 
   return (
-    <div className='my-2'>
-        <h1 className="p-4 font-bold text-2xl text-red-600">Stephen King Books</h1>
-        <p>Click on a book to know more about it</p>
+      <div className='my-2'>
+        <h1 className="p-4 font-bold text-3xl shadow-sm shadow-slate-300 text-red-600">Stephen King Works</h1>
+        <p className="p-4">Click on a book to know more about it</p>
         {isFetching ? <div>Updating..</div> : <div></div>}
         <nav>
             <ul className='p-4'>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Entry } from "../types/Works";
-import { Params, useParams } from "react-router-dom";
+import { Params, useNavigate, useParams } from "react-router-dom";
 import useBooks from "../hooks/useBooks";
 import { useQuery, useQueryErrorResetBoundary } from "@tanstack/react-query";
 import { fetchBook } from "../services/networking";
@@ -37,13 +37,18 @@ export const bookLoader = (queryClient: any) =>
 //   };
 
 function Book() {
+    const navigate = useNavigate();
     const params: any = useParams()
     const { data, isFetching } = useQuery(bookDetailQuery(params.bookId))
     const desc = data.description !== undefined ? data.description : "No description"
     return (
-        <div className="flex flex-col flex-wrap align-top">
-            {isFetching ? <div className="">Updating...</div> : <div></div>}
-            <h1 className="top-4 p-8 text-2xl font-bold justify-center">{data.title}</h1>
+        <div className="flex flex-col flex-wrap align-top h-auto w-auto">
+            <div className="flex flex-row px-6">
+                <button className="hover:text-red-600" onClick={() => navigate(-1)}>Back</button>
+                <div className="order-1"></div>
+            </div>
+            {isFetching ? <div className="">Updating..</div> : <div></div>}
+            <h1 className="top-4 p-4 text-3xl font-bold justify-center">{data.title}</h1>
             <div className="p-4 text-lg">{
                 typeof(data.description) === 'string' 
                 ? desc

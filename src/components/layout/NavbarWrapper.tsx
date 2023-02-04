@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./Navbar";
 
-export function NavbarWrapper() {
+function NavbarWrapper() {
     return (
         <div>
             <Navbar />
@@ -9,3 +9,5 @@ export function NavbarWrapper() {
         </div>
     );
 }
+
+export default NavbarWrapper;
